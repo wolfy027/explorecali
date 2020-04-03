@@ -1,9 +1,12 @@
 package com.example.ec.explorecali.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -16,6 +19,7 @@ public class Tour implements Serializable {
 
 	@Id
 	@Column
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 
 	@Column
@@ -48,10 +52,9 @@ public class Tour implements Serializable {
 	@Column
 	private Region region;
 
-	public Tour(Integer id, String title, String description, String blurb, Integer price, String duration,
-			String bullets, String keywords, TourPackage tourPackage, Difficulty difficulty, Region region) {
+	public Tour(String title, String description, String blurb, Integer price, String duration, String bullets,
+			String keywords, TourPackage tourPackage, Difficulty difficulty, Region region) {
 		super();
-		this.id = id;
 		this.title = title;
 		this.description = description;
 		this.blurb = blurb;
@@ -153,5 +156,26 @@ public class Tour implements Serializable {
 
 	public void setRegion(Region region) {
 		this.region = region;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		Tour tour = (Tour) o;
+		return Objects.equals(id, tour.id) && Objects.equals(title, tour.title)
+				&& Objects.equals(description, tour.description) && Objects.equals(blurb, tour.blurb)
+				&& Objects.equals(price, tour.price) && Objects.equals(duration, tour.duration)
+				&& Objects.equals(bullets, tour.bullets) && Objects.equals(keywords, tour.keywords)
+				&& Objects.equals(tourPackage, tour.tourPackage) && difficulty == tour.difficulty
+				&& region == tour.region;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, title, description, blurb, price, duration, bullets, keywords, tourPackage, difficulty,
+				region);
 	}
 }
