@@ -1,9 +1,10 @@
 package com.example.ec.explorecali.model;
 
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import java.util.Objects;
 
 /**
  * Rating of a Tour by a Customer
