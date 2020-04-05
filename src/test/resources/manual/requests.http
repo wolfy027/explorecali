@@ -58,3 +58,47 @@ GET http://localhost:9999/tours?code=BC&size=10&page=0&sort=title,desc
 
 
 
+# Tour Ratings
+
+
+### Get a Tour Rating
+GET http://localhost:9999/tours/1/ratings
+
+### Create a Tour Rating
+POST http://localhost:9999/tours/1/ratings
+Content-Type: application/json
+
+{
+    "score": 0,
+    "comment": "It was a bad tour",
+    "customerId": 4
+}
+
+### Update a Tour Rating
+PUT http://localhost:9999/tours/1/ratings
+Content-Type: application/json
+
+{
+    "score": 0,
+    "comment": "It was a bad tour",
+    "customerId": 4
+}
+
+
+### Update a Tour Rating using PATCH
+PATCH http://localhost:9999/tours/1/ratings
+Content-Type: application/json
+
+{
+    "score": 0,
+    "customerId": 4
+}
+
+
+### Delete a Tour Rating using Customer Id
+DELETE http://localhost:9999/tours/1/ratings/1
+
+
+### Get Tour Rating Average
+GET http://localhost:9999/tours/1/ratings/average
+
