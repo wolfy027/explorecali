@@ -1,0 +1,60 @@
+#Tour Packages
+
+GET http://localhost:9999/tourPackages
+
+
+###
+GET http://localhost:9999/tourPackages/BC
+
+
+###
+POST http://localhost:9999/tourPackages
+accept: application/json
+
+{
+    "code":"ZC"
+   "name":"Zany California Zoo" 
+}
+
+
+### Update a tour package
+PUT http://localhost:9999/tourPackages/ZC
+accept: application/json
+
+{
+   "name":"Zany California Zoos" 
+}
+
+
+### Delete a tour package
+DELETE http://localhost:9999/tourPackages/ZC
+
+
+### Search a tour package
+GET http://localhost:9999/tourPackages/search
+
+
+### Search a tour package using it's name
+GET http://localhost:9999/tourPackages/search/findByName?name=Backpack Cal
+
+
+
+
+#Tours
+
+
+### Search a tour
+GET http://localhost:9999/tours/search
+
+
+
+### Search a tour using Tour Package Code
+GET http://localhost:9999/tours/search/findByTourPackageCode?code=BC
+
+
+
+### Paging and Sorting results
+GET http://localhost:9999/tours?code=BC&size=10&page=0&sort=title,desc
+
+
+
